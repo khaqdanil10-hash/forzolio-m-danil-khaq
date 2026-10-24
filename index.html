@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080d15">
+  <meta name="description" content="Portofolio Muhammad Danil Khaq - eksplorasi desain digital dan pengembangan web.">
+  <title>Muhammad Danil Khaq - Portofolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #080d15;
+      --panel: #0d1521;
+      --panel-light: #111d2c;
+      --line: #213146;
+      --text: #eef4fb;
+      --muted: #9aabc0;
+      --blue: #53a9ff;
+      --cyan: #83d9ef;
+      --font-display: "Space Grotesk", sans-serif;
+      --font-body: "DM Sans", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background: var(--ink);
+      color: var(--text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { display: block; width: 100%; }
+    .shell { width: min(1120px, calc(100% - 48px)); margin: 0 auto; }
+    .site-header {
+      position: sticky;
+      z-index: 5;
+      top: 0;
+      border-bottom: 1px solid rgba(154, 171, 192, .12);
+      background: rgba(8, 13, 21, .94);
+      backdrop-filter: blur(12px);
+    }
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .wordmark {
+      font-family: var(--font-display);
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: 0;
+    }
+    .wordmark span { color: var(--blue); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { color: var(--muted); font-size: 14px; transition: color .2s ease; }
+    .nav-links a:hover, .nav-links a:focus-visible { color: var(--text); }
+    .nav-links .nav-contact {
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      color: var(--text);
+    }
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--panel);
+      color: var(--text);
+      cursor: pointer;
+    }
+    .hero {
+      min-height: 640px;
+      display: grid;
+      grid-template-columns: 1.08fr .92fr;
+      align-items: center;
+      gap: 76px;
+      padding-top: 48px;
+      padding-bottom: 80px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .eyebrow::before { width: 22px; height: 1px; background: currentColor; content: ""; }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 { font-family: var(--font-display); letter-spacing: 0; }
+    h1 { max-width: 620px; margin-bottom: 20px; font-size: clamp(48px, 6vw, 76px); line-height: 1.04; }
+    h1 span { color: var(--blue); }
+    .hero-copy { max-width: 510px; margin-bottom: 30px; color: var(--muted); font-size: 17px; }
+    .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 0 18px;
+      border: 1px solid var(--blue);
+      border-radius: 4px;
+      background: var(--blue);
+      color: #07111e;
+      font-weight: 700;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .button:hover { transform: translateY(-2px); background: #78baff; }
+    .button-secondary { border-color: var(--line); background: transparent; color: var(--text); }
+    .button-secondary:hover { background: var(--panel-light); }
+    .hero-visual { position: relative; min-height: 450px; }
+    .hero-image {
+      position: absolute;
+      inset: 12px 24px 24px 12px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 5px;
+      background: var(--panel-light);
+    }
+    .hero-image img { height: 100%; object-fit: cover; opacity: .8; }
+    .image-shade { position: absolute; inset: 0; background: linear-gradient(0deg, rgba(8, 13, 21, .75), transparent 62%); }
+    .visual-note {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: min(255px, 76%);
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--panel);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, .28);
+    }
+    .visual-note small { display: block; margin-bottom: 5px; color: var(--blue); font-size: 12px; }
+    .visual-note strong { font-family: var(--font-display); font-size: 17px; }
+    .section { padding: 92px 0; border-top: 1px solid rgba(154, 171, 192, .12); }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 38px; }
+    .section-heading .eyebrow { margin-bottom: 10px; }
+    h2 { margin-bottom: 0; font-size: clamp(32px, 4vw, 44px); line-height: 1.15; }
+    .section-intro { max-width: 410px; margin-bottom: 2px; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; }
+    .about-copy { max-width: 510px; color: var(--muted); }
+    .about-copy p:last-child { margin-bottom: 0; }
+    .skill-list { display: flex; flex-wrap: wrap; align-content: start; gap: 10px; }
+    .skill {
+      padding: 9px 13px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--panel);
+      color: #cfdaea;
+      font-size: 14px;
+    }
+    .projects { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .project { overflow: hidden; border: 1px solid var(--line); border-radius: 5px; background: var(--panel); }
+    .project-image { height: 205px; overflow: hidden; background: var(--panel-light); }
+    .project-image img { height: 100%; object-fit: cover; transition: transform .35s ease; }
+    .project:hover .project-image img { transform: scale(1.04); }
+    .project-body { padding: 20px; }
+    .project-meta { display: flex; justify-content: space-between; gap: 12px; margin-bottom: 10px; color: var(--cyan); font-size: 12px; }
+    .project h3 { margin-bottom: 8px; font-size: 20px; }
+    .project p { margin-bottom: 0; color: var(--muted); font-size: 14px; }
+    .contact-section { padding: 84px 0; background: #0c1725; }
+    .contact-content { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
+    .contact-content h2 { max-width: 570px; margin-bottom: 12px; }
+    .contact-content p:not(.eyebrow) { max-width: 520px; margin-bottom: 0; color: var(--muted); }
+    .site-footer { padding: 24px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 13px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; }
+    .footer-inner p { margin: 0; }
+    :focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; }
+
+    @media (max-width: 760px) {
+      .shell { width: min(100% - 36px, 560px); }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links {
+        position: absolute;
+        top: 67px;
+        right: 18px;
+        left: 18px;
+        display: none;
+        align-items: stretch;
+        gap: 0;
+        padding: 8px 16px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: var(--panel);
+      }
+      .nav-links.is-open { display: flex; flex-direction: column; }
+      .nav-links a { padding: 12px 4px; }
+      .nav-links .nav-contact { margin: 6px 0 8px; padding: 10px 12px; text-align: center; }
+      .hero { min-height: 0; grid-template-columns: 1fr; gap: 28px; padding-top: 74px; padding-bottom: 64px; }
+      h1 { font-size: clamp(44px, 12vw, 64px); }
+      .hero-copy { font-size: 16px; }
+      .hero-visual { min-height: 360px; }
+      .hero-image { inset: 8px 18px 18px 8px; }
+      .section { padding: 68px 0; }
+      .section-heading { align-items: start; flex-direction: column; margin-bottom: 28px; }
+      .about-grid { grid-template-columns: 1fr; gap: 26px; }
+      .projects { grid-template-columns: 1fr; gap: 14px; }
+      .project-image { height: 225px; }
+      .contact-content { align-items: start; flex-direction: column; }
+      .contact-section { padding: 68px 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav shell" aria-label="Navigasi Utama">
+      <a class="wordmark" href="#beranda" aria-label="Muhammad Danil Khaq, Beranda">Danil<span>.</span></a>
+      <button class="menu-toggle" type="button" aria-label="Buka Menu" aria-expanded="false" aria-controls="nav-links">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#tentang">Tentang</a>
+        <a href="#karya">Karya</a>
+        <a class="nav-contact" href="#kontak">Hubungi Saya</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero shell" id="beranda">
+      <div>
+        <p class="eyebrow">Portofolio Digital</p>
+        <h1>Muhammad<br>Danil <span>Khaq</span></h1>
+        <p class="hero-copy">Saya Merancang Dan Membangun Pengalaman Digital Yang Sederhana, Fungsional, Dan Nyaman Digunakan.</p>
+        <div class="actions">
+          <a class="button" href="#karya">Lihat Karya <span aria-hidden="true">↗</span></a>
+          <a class="button button-secondary" href="#tentang">Kenali Saya</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Suasana Ruang Kerja Kreatif">
+        <div class="hero-image">
+          <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&amp;fit=crop&amp;w=1000&amp;q=85" alt="Laptop Dan Peralatan Kerja Di Meja" fetchpriority="high">
+          <div class="image-shade"></div>
+        </div>
+        <div class="visual-note"><small>Fokus Saya</small><strong>Desain Yang Bertemu Teknologi</strong></div>
+      </div>
+    </section>
+
+    <section class="section" id="tentang">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">Tentang Saya</p><h2>Ide Baik, Dibuat<br>Jadi Pengalaman.</h2></div>
+          <p class="section-intro">Mengubah Gagasan Menjadi Produk Digital Yang Terasa Jelas, Cepat, Dan Mudah Dipakai.</p>
+        </div>
+        <div class="about-grid">
+          <div class="about-copy">
+            <p>Halo, Saya Muhammad Danil Khaq. Saya Tertarik Pada Dunia Desain Dan Pengembangan Website, Terutama Bagaimana Tampilan Yang Rapi Bisa Membuat Teknologi Terasa Lebih Dekat.</p>
+            <p>Di Setiap Proyek, Saya Mengutamakan Detail, Struktur Yang Mudah Dipahami, Dan Tampilan Yang Tetap Nyaman Di Berbagai Ukuran Layar.</p>
+          </div>
+          <div class="skill-list" aria-label="Keahlian">
+            <span class="skill">Html5</span><span class="skill">Css3</span><span class="skill">Desain Responsif</span>
+            <span class="skill">Desain Antarmuka</span><span class="skill">JavaScript</span><span class="skill">Prototipe</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="karya">
+      <div class="shell">
+        <div class="section-heading">
+          <div><p class="eyebrow">Pilihan Karya</p><h2>Proyek Pilihan</h2></div>
+          <p class="section-intro">Beberapa Konsep Proyek Untuk Menunjukkan Arah Visual Dan Pendekatan Saya.</p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div class="project-image"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Eksplorasi Desain Grafis Dan Komposisi Visual" loading="lazy"></div>
+            <div class="project-body"><div class="project-meta"><span>01 - Identitas Digital</span><span>2025</span></div><h3>Ruang Kreatif</h3><p>Konsep Website Portofolio Dengan Tata Letak Bersih Dan Karakter Visual Yang Kuat.</p></div>
+          </article>
+          <article class="project">
+            <div class="project-image"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Tampilan Dasbor Analitik Pada Layar" loading="lazy"></div>
+            <div class="project-body"><div class="project-meta"><span>02 - Dasbor Web</span><span>2025</span></div><h3>Data Harian</h3><p>Konsep Dasbor Informatif Yang Membantu Pengguna Membaca Data Dengan Lebih Cepat.</p></div>
+          </article>
+          <article class="project">
+            <div class="project-image"><img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&amp;fit=crop&amp;w=800&amp;q=80" alt="Tim Berkolaborasi Dalam Sebuah Proyek Digital" loading="lazy"></div>
+            <div class="project-body"><div class="project-meta"><span>03 - Produk Digital</span><span>2024</span></div><h3>Temu Karya</h3><p>Konsep Platform Kolaborasi Yang Mempertemukan Kreator Dan Ide Dalam Satu Ruang.</p></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="kontak">
+      <div class="shell contact-content">
+        <div><p class="eyebrow">Mari Terhubung</p><h2>Punya Ide Untuk Dibuat Bersama?</h2><p>Saya Terbuka Untuk Bertukar Pikiran Dan Berkolaborasi Dalam Proyek Menarik.</p></div>
+        <a class="button" href="mailto:?subject=Kolaborasi%20Proyek">Mulai Percakapan <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell footer-inner"><p>Muhammad Danil Khaq</p><p>Dirancang Dengan Teliti - 2025</p></div>
+  </footer>
+
+  <script>
+    const menuButton = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('.nav-links');
+
+    menuButton.addEventListener('click', () => {
+      const isOpen = menuButton.getAttribute('aria-expanded') === 'true';
+      menuButton.setAttribute('aria-expanded', String(!isOpen));
+      menuButton.setAttribute('aria-label', isOpen ? 'Buka Menu' : 'Tutup Menu');
+      navigation.classList.toggle('is-open', !isOpen);
+    });
+
+    navigation.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Buka Menu');
+        navigation.classList.remove('is-open');
+      }
+    });
+  </script>
+</body>
+</html>
